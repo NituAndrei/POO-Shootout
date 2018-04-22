@@ -1,18 +1,22 @@
 # depslib dependency file v1.0
-1524333898 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\engine.cpp
+1524419524 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\engine.cpp
 	"Engine.h"
 
-1524327131 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\engine.h
+1524419445 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\engine.h
 	"Map.h"
+	"Agent.h"
+	"Armor.h"
+	"Weapon.h"
 	<fstream>
+	<cstring>
 
 1524324046 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\map.h
 	<iostream>
 
-1524252799 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\agent.cpp
+1524419318 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\agent.cpp
 	"Agent.h"
 
-1524252799 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\agent.h
+1524420362 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\agent.h
 
 1524252940 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\armor.cpp
 	"Armor.h"
@@ -27,7 +31,7 @@
 
 1524333930 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\weapon.h
 
-1524327146 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\main.cpp
+1524420340 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\main.cpp
 	<iostream>
 	"Map.h"
 	"Engine.h"

@@ -39,6 +39,7 @@
 		<Unit filename="include/Engine.h" />
 		<Unit filename="include/Map.h" />
 		<Unit filename="include/Weapon.h" />
+		<Unit filename="init.in" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Agent.cpp" />
 		<Unit filename="src/Armor.cpp" />

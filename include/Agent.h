@@ -5,9 +5,19 @@
 class Agent
 {
     public:
-        Agent();
+        Agent(int,int,int);
         ~Agent();
     protected:
+        int PositionX,PositionY,id,hp,VisRange;
+    private:
+};
+
+class Soldier: public Agent //de ce nu merge private???
+{
+    public:
+        Soldier(int,int,int);
+    protected:
+
     private:
 };
 
