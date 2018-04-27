@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
 {
+    //cout<<sizeof(Agent)<<" "<<sizeof(Soldier)<<'\n';
     Engine engine;
     engine.displayMap();
     //engine.begin();

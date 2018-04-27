@@ -14,7 +14,7 @@ class Map
         Map(int, int);
         ~Map();
     protected:
-        int **PlayArea;
+        int **PlayArea,MapSizeX,MapSizeY;
         friend class Engine;
     private:
 };

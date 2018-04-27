@@ -1,0 +1,9 @@
+agent = cifre
+arma = litere mici
+armura = litere mari
+
+AR=assault rifle
+SR=Sniper
+STG=Shotgun
+LK/MK/HK=Light/Medium/Heavy Kevlar
+LBS/MBS/EOD=Light/Medium/Heavy body suit

@@ -41,6 +41,7 @@
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="init.in" />
 		<Unit filename="main.cpp" />
+		<Unit filename="names n stuff.txt" />
 		<Unit filename="src/Agent.cpp" />
 		<Unit filename="src/Armor.cpp" />
 		<Unit filename="src/Engine.cpp" />
