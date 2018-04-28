@@ -16,9 +16,8 @@ const char* Weapon::getType()
     return Type;
 }
 
-int Weapon::Fire()
+int Weapon::Fire()//todo
 {
-    //random(0,100), daca<HitChance => deal dmg
     return Damage;
 }
 

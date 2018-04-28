@@ -14,6 +14,9 @@ class Engine
         ~Engine();
         void displayMap();//!!!
         void begin();
+        Agent* getAgentByPosition(int,int);
+        Armor* getArmorByPosition(int,int);
+        Weapon* getWeaponByPosition(int,int);
     protected:
         int MapSizeX,MapSizeY;
         Map *map;

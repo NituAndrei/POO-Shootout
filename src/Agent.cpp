@@ -24,12 +24,17 @@ void Agent::modifyHP(int Value)
     hp+=Value;
 }
 
+void Agent::modifyMoveRange(int Value)
+{
+    MoveRange+=Value;
+}
+
 Soldier::Soldier(int ID, int X, int Y):Agent(ID,X,Y)
 {
     hp=100;
     VisRange=6;
     MoveRange=3;
-    EquippedArmor=NULL;
+    //EquippedArmor=NULL;
     EquippedWeapon=NULL;
     strcpy(PreferredWeapon,"AR");
     strcpy(PreferredArmor,"MK");

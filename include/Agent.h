@@ -1,7 +1,8 @@
 #ifndef AGENT_H
 #define AGENT_H
+
 #include "Weapon.h"
-#include "Armor.h"
+//#include "Armor.h"
 
 class Agent
 {
@@ -10,20 +11,27 @@ class Agent
         ~Agent();
         int getHP();
         void modifyHP(int);
-        //makeTurn()
+        /*
+        int getVisRange();
+        void modifyVisRange(int);
+        int getMoveRange();
+        */
+        void modifyMoveRange(int);
+        //makeTurn(*Engine)
         /*
         verif daca sta pe un item pe care-l vrea
         manhattan distance -> 4 directii de miscare
         daca vede inamic si are arma -> trage
         daca inamicu are STG si el nu are -> se indeparteaza la max rangeul armei lui/VisRange (oricacare e mai mic)
         daca gaseste arma/armura pref in VisRange-> rush la ea
+
         */
     protected:
         int PositionX,PositionY,id,hp,VisRange,MoveRange;
-        char PreferredWeapon[5],PreferredArmor[5];
+        char PreferredWeapon[5],PreferredArmor[5],EquippedArmorType[5];
         Weapon *EquippedWeapon;
-        Armor *EquippedArmor;
-        friend class Armor;
+        //Armor *EquippedArmor;
+        //friend class Armor;
     private:
 };
 

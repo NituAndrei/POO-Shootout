@@ -91,6 +91,21 @@ void Engine::displayMap()//!!!
     }
 }
 
+Agent* Engine::getAgentByPosition(int PosX,int PosY)
+{
+    return AgentList[map->PlayArea[PosX][PosY]%AGENT_ID];
+}
+
+Armor* Engine::getArmorByPosition(int PosX,int PosY)
+{
+    return ArmorList[map->PlayArea[PosX][PosY]%ARMOR_ID];
+}
+
+Weapon* Engine::getWeaponByPosition(int PosX,int PosY)
+{
+    return WeaponList[map->PlayArea[PosX][PosY]%WEAPON_ID];
+}
+
 void Engine::begin()
 {
 
