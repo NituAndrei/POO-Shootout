@@ -13,6 +13,7 @@ class Map
         Map();
         Map(int, int);
         ~Map();
+        void displayMap();
     protected:
         int **PlayArea,MapSizeX,MapSizeY;
         friend class Engine;

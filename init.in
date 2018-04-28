@@ -1,8 +1,11 @@
 10 10
-3 -1 3
+3 3 3
 soldier 0 0
 soldier 1 9
 soldier 9 9
+MK 4 4
+MK 0 6
+MK 8 1
 AR 5 3
 AR 6 6
 AR 2 4

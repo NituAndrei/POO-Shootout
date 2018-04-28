@@ -2,6 +2,7 @@
 #define AGENT_H
 
 #include "Weapon.h"
+#include "Map.h"
 //#include "Armor.h"
 
 class Agent
@@ -11,13 +12,14 @@ class Agent
         ~Agent();
         int getHP();
         void modifyHP(int);
-        /*
         int getVisRange();
         void modifyVisRange(int);
         int getMoveRange();
-        */
         void modifyMoveRange(int);
-        //makeTurn(*Engine)
+        void getPosition(int&,int&);
+        void modifyPosition(int,int);
+        Weapon* getWeapon();
+        virtual int makeTurn(int&,int&,Map,int&);//returneaza cat damage i-a dat lui target
         /*
         verif daca sta pe un item pe care-l vrea
         manhattan distance -> 4 directii de miscare
@@ -40,6 +42,7 @@ class Soldier: public Agent //de ce nu merge private???
 {
     public:
         Soldier(int,int,int);
+        //int makeTurn(int,int,Map,int);
     protected:
     private:
 };

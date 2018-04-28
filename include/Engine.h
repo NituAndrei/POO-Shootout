@@ -14,11 +14,12 @@ class Engine
         ~Engine();
         void displayMap();//!!!
         void begin();
+        void doThing();
         Agent* getAgentByPosition(int,int);
         Armor* getArmorByPosition(int,int);
         Weapon* getWeaponByPosition(int,int);
     protected:
-        int MapSizeX,MapSizeY;
+        int AgentNumber,ArmorNumber,WeaponNumber,Debug;
         Map *map;
         Agent **AgentList;
         Armor **ArmorList;

@@ -1,9 +1,10 @@
 #include "Armor.h"
 #include "Agent.h"
+#include <cstring>
 
-Armor::Armor()
+Armor::Armor(int ID)
 {
-    //ctor
+    id=ID;
 }
 
 Armor::~Armor()
@@ -11,7 +12,17 @@ Armor::~Armor()
     //dtor
 }
 
+const char* Armor::getType()
+{
+    return Type;
+}
+
 //MediumKevlar
+
+MediumKevlar::MediumKevlar(int ID):Armor(ID)
+{
+    strcpy(Type,"MK");
+}
 
 void MediumKevlar::applyModifiers(Agent& Wearer)
 {
@@ -23,5 +34,8 @@ void MediumKevlar::applyModifiers(Agent& Wearer)
 void MediumKevlar::removeModifiers(Agent& Wearer)
 {
     Wearer.modifyMoveRange(1);
-    Wearer.modifyHP(-20);
+    if(Wearer.getHP()>=21)
+        Wearer.modifyHP(-20);
+    else
+        Wearer.modifyHP(-(Wearer.getHP())+1);
 }

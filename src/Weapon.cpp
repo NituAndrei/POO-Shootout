@@ -21,6 +21,8 @@ int Weapon::Fire()//todo
     return Damage;
 }
 
+//Assault Rifle
+
 AssaultRifle::AssaultRifle(int ID):Weapon(ID)
 {
     Damage=25;
