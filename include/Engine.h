@@ -4,6 +4,7 @@
 #include "Agent.h"
 #include "Armor.h"
 #include "Weapon.h"
+#include <list>
 #include <fstream>
 #include <cstring>
 

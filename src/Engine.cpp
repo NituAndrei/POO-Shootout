@@ -128,6 +128,11 @@ void Engine::doThing()
     AgentList[2]->modifyHP(-199);
 }
 
+struct Point
+{
+    int X,Y;
+};
+
 void Engine::begin()
 {
     int i;
@@ -158,9 +163,51 @@ void Engine::begin()
 
     for(i=1;i<=AgentNumber;i++)
     {
-        int DeltaX=0,DeltaY=0,TargetID=0;
-        Map Surroundings(3,3);
-        AgentList[i]->makeTurn(DeltaX,DeltaY,Surroundings,TargetID); //Surroundings se face din Map aux, se apeleaza cu (0,0, Surroundings,0)
+        if(AgentList[i]==NULL)
+            continue;
+        int DeltaX=0,DeltaY=0,TargetID=0,CurrentVisRange=AgentList[i]->getVisRange(),DX[4]={-1,0,1,0},DY[4]={0,1,0,-1};
+        std::list<Point> Queue;
+        Point CurrentPosition;
+        Map Surroundings(2*CurrentVisRange+1,2*CurrentVisRange+1);
+
+        AgentList[i]->getPosition(CurrentPosition.X,CurrentPosition.Y);
+        for(int j=-CurrentVisRange;j<=CurrentVisRange;j++)
+        {
+            for(int l=-CurrentVisRange;l<=CurrentVisRange;l++)
+            {
+                if(CurrentPosition.X+j<0)
+                {
+                    Surroundings.PlayArea[j+CurrentVisRange][l+CurrentVisRange]='0';
+                    continue;
+                }
+                if(CurrentPosition.X+j>(map->MapSizeX)-1)
+                {
+                    Surroundings.PlayArea[j+CurrentVisRange][l+CurrentVisRange]='0';
+                    continue;
+                }
+                if(CurrentPosition.Y+l<0)
+                {
+                    Surroundings.PlayArea[j+CurrentVisRange][l+CurrentVisRange]='0';
+                    continue;
+                }
+                if(CurrentPosition.Y+l>(map->MapSizeY)-1)
+                {
+                    Surroundings.PlayArea[j+CurrentVisRange][l+CurrentVisRange]='0';
+                    continue;
+                }
+                Surroundings.PlayArea[j+CurrentVisRange][l+CurrentVisRange]=aux.PlayArea[CurrentPosition.X+j][CurrentPosition.Y+l];
+            }
+        }
+        std::cout<<'\n'<<'\n';
+        Surroundings.displayMap();
+        AgentList[i]->getPosition(CurrentPosition.X,CurrentPosition.Y);
+        Queue.push_back(CurrentPosition);
+        while(CurrentVisRange)
+        {
+
+            CurrentVisRange--;
+        }
+        //AgentList[i]->makeTurn(DeltaX,DeltaY,Surroundings,TargetID); //Surroundings se face din Map aux, se apeleaza cu (0,0, Surroundings,0)
     }
 
     int AgentsAlive=AgentNumber;
