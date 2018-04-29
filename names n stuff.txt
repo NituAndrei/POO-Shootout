@@ -2,8 +2,11 @@ agent = cifre
 arma = litere mici
 armura = litere mari
 
-AR=assault rifle
-SR=Sniper
-STG=Shotgun
-LK/MK/HK=Light/Medium/Heavy Kevlar
-LBS/MBS/EOD=Light/Medium/Heavy body suit
+id:1 Soldier
+
+id:1 AR=assault rifle
+id:2 SR=Sniper
+id:3 STG=Shotgun
+
+id:1,2,3 LK/MK/HK=Light/Medium/Heavy Kevlar
+id:4,5,6 LBS/MBS/EOD=Light/Medium/Heavy body suit

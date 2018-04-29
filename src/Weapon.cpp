@@ -1,9 +1,11 @@
 #include "Weapon.h"
 #include <cstring>
 
-Weapon::Weapon(int ID)
+Weapon::Weapon(int ID,int PosX, int PosY)
 {
     id=ID;
+    PositionX=PosX;
+    PositionY=PosY;
 }
 
 Weapon::~Weapon()
@@ -16,6 +18,11 @@ const char* Weapon::getType()
     return Type;
 }
 
+int Weapon::getRange()
+{
+    return Range;
+}
+
 int Weapon::Fire()//todo
 {
     return Damage;
@@ -23,7 +30,7 @@ int Weapon::Fire()//todo
 
 //Assault Rifle
 
-AssaultRifle::AssaultRifle(int ID):Weapon(ID)
+AssaultRifle::AssaultRifle(int ID,int PosX,int PosY):Weapon(ID,PosX,PosY)
 {
     Damage=25;
     Range=6;

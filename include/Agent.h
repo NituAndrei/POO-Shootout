@@ -3,6 +3,9 @@
 
 #include "Weapon.h"
 #include "Map.h"
+#include <cstddef>
+#include <cstring>
+#include <list>
 //#include "Armor.h"
 
 class Agent
@@ -10,6 +13,7 @@ class Agent
     public:
         Agent(int,int,int);
         ~Agent();
+        int getID();
         int getHP();
         void modifyHP(int);
         int getVisRange();
@@ -19,8 +23,12 @@ class Agent
         void getPosition(int&,int&);
         void modifyPosition(int,int);
         Weapon* getWeapon();
+        void equipWeapon(Weapon*);
+        void equipArmor(const char*);
+        const char* getType();
         virtual int makeTurn(int&,int&,Map,int&);//returneaza cat damage i-a dat lui target
         /*
+
         verif daca sta pe un item pe care-l vrea
         manhattan distance -> 4 directii de miscare
         daca vede inamic si are arma -> trage
@@ -30,7 +38,7 @@ class Agent
         */
     protected:
         int PositionX,PositionY,id,hp,VisRange,MoveRange;
-        char PreferredWeapon[5],PreferredArmor[5],EquippedArmorType[5];
+        char PreferredWeapon[5],PreferredArmor[5],EquippedArmorType[5],Type[10];
         Weapon *EquippedWeapon;
         //Armor *EquippedArmor;
         //friend class Armor;

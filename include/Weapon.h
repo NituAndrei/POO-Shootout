@@ -4,12 +4,13 @@
 class Weapon
 {
     public:
-        Weapon(int);
+        Weapon(int,int,int);
         ~Weapon();
         virtual int Fire();//returneaza damage dat
+        int getRange();
         const char* getType();
     protected:
-        int Damage,Range,HitChance,id;
+        int Damage,Range,HitChance,id,PositionX,PositionY;
         char Type[5];
     private:
 };
@@ -18,7 +19,7 @@ class Weapon
 class AssaultRifle: public Weapon
 {
     public:
-        AssaultRifle(int);
+        AssaultRifle(int,int,int);
     protected:
     private:
 };

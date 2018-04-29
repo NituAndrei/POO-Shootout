@@ -14,9 +14,11 @@ class Map
         Map(int, int);
         ~Map();
         void displayMap();
+        void getMapSize(int&,int&);
     protected:
         int **PlayArea,MapSizeX,MapSizeY;
         friend class Engine;
+        friend class Agent;
     private:
 };
 

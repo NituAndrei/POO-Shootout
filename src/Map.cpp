@@ -55,6 +55,12 @@ void Map::displayMap()//!!!
     std::cout<<Frame++<<'\n'<<'\n';
 }
 
+void Map::getMapSize(int &SizeX, int &SizeY)
+{
+    SizeX=MapSizeX;
+    SizeY=MapSizeY;
+}
+
 /*
 Map* Map::operator=(const Map *Source)
 {

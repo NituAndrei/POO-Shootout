@@ -23,7 +23,7 @@ Engine::Engine()
             if(!strcmp(type,"soldier"))
             {
                 AgentList[i]=new Soldier(AGENT_ID+i,x,y);
-                (map->PlayArea)[x][y]=AGENT_ID+i;
+                (map->PlayArea)[x][y]=AGENT_ID+1;
             }
         }
     }
@@ -43,8 +43,8 @@ Engine::Engine()
             f>>x>>y;
             if(!strcmp(type,"MK"))
             {
-                ArmorList[i]=new MediumKevlar(ARMOR_ID+i);
-                (map->PlayArea)[x][y]=ARMOR_ID+i;
+                ArmorList[i]=new MediumKevlar(ARMOR_ID+i,x,y);
+                (map->PlayArea)[x][y]=ARMOR_ID+2;
             }
         }
     }
@@ -64,8 +64,8 @@ Engine::Engine()
             f>>x>>y;
             if(!strcmp(type,"AR"))
             {
-                WeaponList[i]=new AssaultRifle(WEAPON_ID+i);
-                (map->PlayArea)[x][y]=WEAPON_ID+i;
+                WeaponList[i]=new AssaultRifle(WEAPON_ID+i,x,y);
+                (map->PlayArea)[x][y]=WEAPON_ID+1;
             }
         }
     }
@@ -110,15 +110,22 @@ void Engine::displayMap()//!!!
 
 Agent* Engine::getAgentByPosition(int PosX,int PosY)
 {
+    int x,y;
+    for(int i=1;i<=AgentNumber;i++)
+    {
+        AgentList[i]->getPosition(x,y);
+        if(x==PosX && y==PosY)
+            return AgentList[i];
+    }
     return AgentList[map->PlayArea[PosX][PosY]%AGENT_ID];
 }
 
-Armor* Engine::getArmorByPosition(int PosX,int PosY)
+Armor* Engine::getArmorByPosition(int PosX,int PosY)//pls change
 {
     return ArmorList[map->PlayArea[PosX][PosY]%ARMOR_ID];
 }
 
-Weapon* Engine::getWeaponByPosition(int PosX,int PosY)
+Weapon* Engine::getWeaponByPosition(int PosX,int PosY)//pls change
 {
     return WeaponList[map->PlayArea[PosX][PosY]%WEAPON_ID];
 }
@@ -126,12 +133,27 @@ Weapon* Engine::getWeaponByPosition(int PosX,int PosY)
 void Engine::doThing()
 {
     AgentList[2]->modifyHP(-199);
+    AgentList[1]->modifyHP(50);
 }
 
 struct Point
 {
     int X,Y;
 };
+
+int getDistance(int x1,int y1,int x2,int y2)
+{
+    int d=0;
+    if(x1>x2)
+        d+=x1-x2;
+    else
+        d+=x2-x1;
+    if(y1>y2)
+        d+=y1-y2;
+    else
+        d+=y2-y1;
+    return d;
+}
 
 void Engine::begin()
 {
@@ -165,8 +187,7 @@ void Engine::begin()
     {
         if(AgentList[i]==NULL)
             continue;
-        int DeltaX=0,DeltaY=0,TargetID=0,CurrentVisRange=AgentList[i]->getVisRange(),DX[4]={-1,0,1,0},DY[4]={0,1,0,-1};
-        std::list<Point> Queue;
+        int DeltaX=0,DeltaY=0,TargetID=0,CurrentVisRange=AgentList[i]->getVisRange(),DamageDealt=0;
         Point CurrentPosition;
         Map Surroundings(2*CurrentVisRange+1,2*CurrentVisRange+1);
 
@@ -175,6 +196,11 @@ void Engine::begin()
         {
             for(int l=-CurrentVisRange;l<=CurrentVisRange;l++)
             {
+                if(getDistance(CurrentPosition.X,CurrentPosition.Y,CurrentPosition.X+j,CurrentPosition.Y+l) > AgentList[i]->getVisRange())
+                {
+                    Surroundings.PlayArea[j+CurrentVisRange][l+CurrentVisRange]='0';
+                    continue;
+                }
                 if(CurrentPosition.X+j<0)
                 {
                     Surroundings.PlayArea[j+CurrentVisRange][l+CurrentVisRange]='0';
@@ -198,16 +224,81 @@ void Engine::begin()
                 Surroundings.PlayArea[j+CurrentVisRange][l+CurrentVisRange]=aux.PlayArea[CurrentPosition.X+j][CurrentPosition.Y+l];
             }
         }
-        std::cout<<'\n'<<'\n';
-        Surroundings.displayMap();
-        AgentList[i]->getPosition(CurrentPosition.X,CurrentPosition.Y);
-        Queue.push_back(CurrentPosition);
-        while(CurrentVisRange)
+        //std::cout<<'\n'<<'\n';
+        //Surroundings.displayMap();
+        DamageDealt=AgentList[i]->makeTurn(DeltaX,DeltaY,Surroundings,TargetID); //Surroundings se face din Map aux, se apeleaza cu (0,0, Surroundings,0)
+        if(TargetID==0)
         {
-
-            CurrentVisRange--;
+            if(DeltaX!=0 || DeltaY!=0)
+            {
+                if(map->PlayArea[CurrentPosition.X+DeltaX][CurrentPosition.Y+DeltaY]%AGENT_ID==1)
+                {
+                    Agent *Enemy=getAgentByPosition(CurrentPosition.X+DeltaX,CurrentPosition.Y+DeltaY);
+                    int j=(Enemy->getID())%AGENT_ID;
+                    if(AgentList[i]->getHP() > Enemy->getHP())
+                    {
+                        AgentList[i]->modifyHP(-AgentList[j]->getHP());
+                        AgentList[j]->modifyHP(-AgentList[j]->getHP());
+                        /*
+                        int j=Enemy->getID();
+                        delete AgentList[j];
+                        AgentList[j]=NULL;
+                        */
+                    }
+                    if(AgentList[i]->getHP() < Enemy->getHP())
+                    {
+                        AgentList[j]->modifyHP(-AgentList[i]->getHP());
+                        AgentList[i]->modifyHP(-AgentList[i]->getHP());
+                        /*
+                        delete AgentList[i];
+                        AgentList[i]=NULL;
+                        */
+                    }
+                    if(AgentList[i]->getHP() == Enemy->getHP())
+                    {
+                        AgentList[i]->modifyHP(-AgentList[i]->getHP());
+                        AgentList[j]->modifyHP(-AgentList[j]->getHP());
+                        map->PlayArea[CurrentPosition.X][CurrentPosition.Y]='.';
+                        map->PlayArea[CurrentPosition.X+DeltaX][CurrentPosition.Y+DeltaY]='.';
+                        continue;
+                        /*
+                        int j=Enemy->getID();
+                        delete AgentList[j];
+                        AgentList[j]=NULL;
+                        */
+                    }
+                    /*
+                    if(AgentList[i]->getHP()>0)
+                        map->PlayArea[CurrentPosition.X+DeltaX][CurrentPosition.Y+DeltaY]=map->PlayArea[CurrentPosition.X][CurrentPosition.Y];
+                    else
+                        map->PlayArea[CurrentPosition.X+DeltaX][CurrentPosition.Y+DeltaY]='.';
+                    map->PlayArea[CurrentPosition.X][CurrentPosition.Y]='.';
+                    */
+                }
+                if(AgentList[i]->getHP()>0)
+                    map->PlayArea[CurrentPosition.X+DeltaX][CurrentPosition.Y+DeltaY]=map->PlayArea[CurrentPosition.X][CurrentPosition.Y];
+                map->PlayArea[CurrentPosition.X][CurrentPosition.Y]='.';
+            }
+            continue;
         }
-        //AgentList[i]->makeTurn(DeltaX,DeltaY,Surroundings,TargetID); //Surroundings se face din Map aux, se apeleaza cu (0,0, Surroundings,0)
+        //modific in map pozitia agentului cu DeltaX,DeltaY
+        //also de verificat daca sunt 2 agenti in acelasi loc
+    }
+    for(i=1;i<=AgentNumber;i++)
+    {
+        if(AgentList[i]->getHP())
+        {
+            int X,Y;
+            AgentList[i]->getPosition(X,Y);
+            map->PlayArea[X][Y]=aux.PlayArea[X][Y];
+            if((map->PlayArea[X][Y])/ARMOR_ID==1)
+            {
+                AgentList[i]->equipArmor( getArmorByPosition(X,Y)->getType() );
+                getArmorByPosition(X,Y)->applyModifiers(*AgentList[i]);
+                if(!strcmp(AgentList[i]->getType(),"soldier"))
+                    map->PlayArea[X][Y]=AGENT_ID+1;
+            }
+        }
     }
 
     int AgentsAlive=AgentNumber;

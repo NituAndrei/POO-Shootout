@@ -2,9 +2,11 @@
 #include "Agent.h"
 #include <cstring>
 
-Armor::Armor(int ID)
+Armor::Armor(int ID, int PosX, int PosY)
 {
     id=ID;
+    PositionX=PosX;
+    PositionY=PosY;
 }
 
 Armor::~Armor()
@@ -19,7 +21,7 @@ const char* Armor::getType()
 
 //MediumKevlar
 
-MediumKevlar::MediumKevlar(int ID):Armor(ID)
+MediumKevlar::MediumKevlar(int ID,int PosX,int PosY):Armor(ID,PosX,PosY)
 {
     strcpy(Type,"MK");
 }

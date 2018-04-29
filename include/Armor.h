@@ -6,13 +6,13 @@
 class Armor
 {
     public:
-        Armor(int);
+        Armor(int,int,int);
         ~Armor();
         virtual void applyModifiers(Agent&)=0;
         virtual void removeModifiers(Agent&)=0;
         const char* getType();
     protected:
-        int id;
+        int id,PositionX,PositionY;
         char Type[5];
     private:
 };
@@ -21,7 +21,7 @@ class Armor
 class MediumKevlar: public Armor
 {
     public:
-        MediumKevlar(int);
+        MediumKevlar(int,int,int);
         void applyModifiers(Agent&);
         void removeModifiers(Agent&);
     protected:
