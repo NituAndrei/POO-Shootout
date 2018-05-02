@@ -241,8 +241,8 @@ int Agent::makeTurn(int &DeltaX, int &DeltaY, Map map, int &target)
                         return 0;
                     }
                 }
+
             }
-            //else fuge
         }
     }
     //RANDOM position
@@ -278,4 +278,3 @@ Soldier::Soldier(int ID, int X, int Y):Agent(ID,X,Y)
     PreferredArmorID=2;
     strcpy(Type,"soldier");
 }
-

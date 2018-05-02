@@ -1,47 +1,91 @@
 # depslib dependency file v1.0
-1525021484 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\engine.cpp
+1525030855 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\engine.cpp
 	"Engine.h"
 
-1525001157 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\engine.h
+1525265489 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\engine.h
 	"Map.h"
 	"Agent.h"
 	"Armor.h"
 	"Weapon.h"
+	"AssaultRifle.h"
+	"SniperRifle.h"
+	"Shotgun.h"
+	"LightKevlar.h"
+	"MediumKevlar.h"
+	"HeavyKevlar.h"
 	<fstream>
 	<cstring>
 
 1525009688 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\map.h
 	<iostream>
 
-1525021457 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\agent.cpp
+1525030306 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\agent.cpp
 	"Agent.h"
 
-1525021353 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\agent.h
+1525266459 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\agent.h
 	"Weapon.h"
 	"Map.h"
 	<cstddef>
 	<cstring>
 	<list>
 
-1525019100 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\armor.cpp
+1525031376 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\armor.cpp
 	"Armor.h"
 	"Agent.h"
 	<cstring>
 
-1525019109 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\armor.h
+1525031367 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\armor.h
 	"Agent.h"
 
-1525007944 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\map.cpp
+1525030436 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\map.cpp
 	"Map.h"
 
-1525019143 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\weapon.cpp
+1525030977 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\weapon.cpp
 	"Weapon.h"
 	<cstring>
 
-1525019306 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\weapon.h
+1525030975 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\weapon.h
 
-1525018363 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\main.cpp
+1525265416 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\main.cpp
 	<iostream>
+	<time.h>
+	<cstdlib>
 	"Map.h"
 	"Engine.h"
+
+1525030604 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\assaultrifle.h
+	"Weapon.h"
+
+1525030570 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\assaultrifle.cpp
+	"AssaultRifle.h"
+
+1525030738 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\sniperrifle.h
+	"Weapon.h"
+
+1525030757 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\shotgun.h
+	"Weapon.h"
+
+1525030958 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\shotgun.cpp
+	"Shotgun.h"
+
+1525030749 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\sniperrifle.cpp
+	"SniperRifle.h"
+
+1525031055 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\mediumkevlar.h
+	"Armor.h"
+
+1525031163 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\lightkevlar.h
+	"Armor.h"
+
+1525031076 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\mediumkevlar.cpp
+	"MediumKevlar.h"
+
+1525031258 c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\include\heavykevlar.h
+	"Armor.h"
+
+1525031222 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\lightkevlar.cpp
+	"LightKevlar.h"
+
+1525031352 source:c:\aplicatii\codeblocks 13.15\projects\universitate\poo\tema2\shootout\src\heavykevlar.cpp
+	"HeavyKevlar.h"
 

@@ -36,16 +36,28 @@
 		</Compiler>
 		<Unit filename="include/Agent.h" />
 		<Unit filename="include/Armor.h" />
+		<Unit filename="include/AssaultRifle.h" />
 		<Unit filename="include/Engine.h" />
+		<Unit filename="include/HeavyKevlar.h" />
+		<Unit filename="include/LightKevlar.h" />
 		<Unit filename="include/Map.h" />
+		<Unit filename="include/MediumKevlar.h" />
+		<Unit filename="include/Shotgun.h" />
+		<Unit filename="include/SniperRifle.h" />
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="init.in" />
 		<Unit filename="main.cpp" />
 		<Unit filename="names n stuff.txt" />
 		<Unit filename="src/Agent.cpp" />
 		<Unit filename="src/Armor.cpp" />
+		<Unit filename="src/AssaultRifle.cpp" />
 		<Unit filename="src/Engine.cpp" />
+		<Unit filename="src/HeavyKevlar.cpp" />
+		<Unit filename="src/LightKevlar.cpp" />
 		<Unit filename="src/Map.cpp" />
+		<Unit filename="src/MediumKevlar.cpp" />
+		<Unit filename="src/Shotgun.cpp" />
+		<Unit filename="src/SniperRifle.cpp" />
 		<Unit filename="src/Weapon.cpp" />
 		<Extensions>
 			<code_completion />
